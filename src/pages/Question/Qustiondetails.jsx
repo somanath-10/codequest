@@ -17,7 +17,7 @@ const Qustiondetails = () => {
     const user =useSelector((state)=>state.currentuserreducer)
     const location=useLocation()
     const navigate=useNavigate()
-    const url="http://localhost:3000"
+    const url="https://null-intern-backend-2.onrender.com/"
     const handlepostans=(e,answerlength)=>{
         e.preventDefault();
         if(user ===null){
