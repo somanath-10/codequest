@@ -8,6 +8,7 @@ import { legacy_createStore as createstore, applyMiddleware, compose } from 'red
 import {thunk} from "redux-thunk"
 import reducers from './reducers';
 
+
 const store = createstore(reducers, compose(applyMiddleware(thunk)))
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

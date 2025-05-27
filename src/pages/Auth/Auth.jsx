@@ -6,6 +6,22 @@ import icon from '../../assets/icon.png'
 import Aboutauth from './Aboutauth'
 import { signup, login } from '../../action/auth'
 const Auth = () => {
+
+  const [isVisible, setIsVisible] = useState(false);
+
+
+  const generatePassword = (length = 5) => {
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let newPassword = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * chars.length);
+      newPassword += chars[randomIndex];
+    }
+    setpassword(newPassword);
+  };
+
+
+
     const [issignup, setissignup] = useState(false)
     const [name, setname] = useState("");
     const [email, setemail] = useState("");
@@ -56,19 +72,68 @@ const Auth = () => {
                             setemail(e.target.value);
                         }} />
                     </label>
-                    <label htmlFor="password">
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                            <h4>Password</h4>
-                            {!issignup && (
-                                <p style={{ color: "#007ac6", fontSize: "13px" }}>
-                                    Forgot Password?
-                                </p>
-                            )}
-                        </div>
-                        <input type="password" name="password" id="password" value={password} onChange={(e) => {
-                            setpassword(e.target.value)
-                        }} />
-                    </label>
+                <label htmlFor="password">
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                        <h4>Password</h4>
+                        {!issignup && (
+                        <button onClick={()=>navigate('/request-otp')} className='handle-switch-btn' style={{ color: "#007ac6", fontSize: "13px" }}>
+                            Forgot Password?
+                        </button>
+                        )}
+                    </div>
+
+                    <div style={{ position: "relative" }}>
+                        <input
+                        type={isVisible ? 'text' : 'password'}
+                        name="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setpassword(e.target.value)}
+                        />
+                        <button
+                        type="button"
+                        onClick={() => setIsVisible(!isVisible)}
+                        style={{
+                            position: 'absolute',
+                            right: 10,
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            background: 'none',
+                            border: 'none',
+                            color: '#007ac6',
+                            cursor: 'pointer'
+                        }}
+                        >
+                        {isVisible ? 'Hide' : 'Show'}
+                        </button>
+                    </div>
+                    {
+                        issignup ? (<div className="password-generator" style={{ marginTop: '12px' }}>
+                    <h4>Need a strong password?</h4>
+                    <button
+                        onClick={() => generatePassword(12)}
+                        style={{
+                        marginTop: '6px',
+                        padding: '8px 16px',
+                        backgroundColor: '#007ac6',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '6px',
+                        cursor: 'pointer',
+                        fontSize: '14px',
+                        transition: 'background-color 0.3s ease',
+                        }}
+                        onMouseEnter={e => (e.target.style.backgroundColor = '#005fa3')}
+                        onMouseLeave={e => (e.target.style.backgroundColor = '#007ac6')}
+                    >
+                        Generate Password
+                    </button>
+                    </div>):(<></>)
+                    }
+
+                    
+
+                </label>
                     <button type='submit' className='auth-btn' >
                         {issignup ? "Sign up" : "Log in"}
                     </button>

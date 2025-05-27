@@ -8,6 +8,9 @@ import Displayquestion from './pages/Question/Displayquestion'
 import Tags from './pages/Tags/Tags'
 import Users from './pages/Users/Users'
 import Userprofile from './pages/Userprofile/Userprofile'
+import RequestOtp from './Comnponent/PasswordReset/RequestOtp'
+import VerifyOtp from './Comnponent/PasswordReset/VerifyOtp'
+import ResetPassword from './Comnponent/PasswordReset/ResetPassword'
 function Allroutes({slidein,handleslidein}) {
   return (
     <Routes>
@@ -19,6 +22,10 @@ function Allroutes({slidein,handleslidein}) {
         <Route path='/Tags' element={<Tags slidein={slidein} handleslidein={handleslidein}/>}/>
         <Route path='/Users' element={<Users slidein={slidein} handleslidein={handleslidein}/>}/>
         <Route path='/Users/:id' element={<Userprofile slidein={slidein} handleslidein={handleslidein}/>}/>
+        <Route path='/request-otp' element={<RequestOtp/>}/>
+        <Route path='/verify-otp' element={<VerifyOtp/>}/>
+        <Route path='/reset-password' element={<ResetPassword/>}/>
+
     </Routes>
   )
 }
