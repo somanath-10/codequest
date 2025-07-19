@@ -7,7 +7,7 @@ const Tags = ({slidein}) => {
   return (
    <div className="home-container-1">
     <Leftsidebar slidein={slidein}/>
-    <div className="home-container-2">
+    <div className="pt-16 ml-0 md:ml-[240px] px-4">
         <h1 className="tags-h1">
             Tags
         </h1>

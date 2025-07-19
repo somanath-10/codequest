@@ -15,10 +15,17 @@ export const signup =(authdata,naviagte)=> async(dispatch)=>{
 export const login =(authdata,naviagte)=> async(dispatch)=>{
     try {
         const{data}=await api.login(authdata);
-        dispatch({type:"AUTH",data})
-        dispatch(setcurrentuser(JSON.parse(localStorage.getItem("Profile"))));
-        naviagte("/")
+        console.log("API DATA : ",data);
+        if (data.otpRequired) {
+            naviagte('/verify-otp', { state: { email: data.email,success:false } });
+            return;
+        }
+        if(data.success){
+            dispatch({type:"AUTH",data})
+            dispatch(setcurrentuser(JSON.parse(localStorage.getItem("Profile"))));
+            naviagte("/")
+        }
     } catch (error) {
-        console.log(error)
+        console.log(error.message)
     }
 }

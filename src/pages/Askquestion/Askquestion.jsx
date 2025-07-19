@@ -7,6 +7,8 @@ const Askquestion = () => {
     const navigate = useNavigate();
     const dispatch=useDispatch();
     const user = useSelector((state)=>state.currentuserreducer)
+
+    console.log("user in id",user)
     const [questiontitle, setquestiontitle] = useState("");
     const [questionbody, setquestionbody] = useState("");
     const [questiontag, setquestiontags] = useState("")
@@ -14,8 +16,7 @@ const Askquestion = () => {
         e.preventDefault();
         if (user) {
             if (questionbody && questiontitle && questiontag) {
-                dispatch(askquestion({questiontitle,questionbody,questiontag,userposted:user.result.name},navigate))
-                alert("you have successfuly posted a question")
+                dispatch(askquestion({questiontitle,questionbody,questiontag,userposted:user.existingUser.name},navigate))
 
             } else {
                 alert("Please enter all the fields")

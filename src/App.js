@@ -7,7 +7,7 @@ import Allroutes from './Allroutes'
 import { useDispatch } from 'react-redux';
 import { fetchallquestion } from './action/question';
 function App() {
-  const [slidein,setslidein]=useState(true)
+  const [slidein,setslidein]=useState(true);
   const dispatch=useDispatch()
 useEffect(()=>{
   dispatch(fetchallusers());
@@ -20,9 +20,7 @@ useEffect(()=>{
     }
   },[])
   const handleslidein=()=>{
-    if(window.innerWidth<=768){
-      setslidein((state)=> !state);
-    }
+    setslidein((state)=> !state);  
   };
 
   return (

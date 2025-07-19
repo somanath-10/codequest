@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import "./Auth.css"
@@ -9,7 +9,13 @@ const Auth = () => {
 
   const [isVisible, setIsVisible] = useState(false);
 
+  const token = JSON.parse(localStorage.getItem("Profile"));
 
+  useEffect(()=>{
+    if(token){
+        navigate('/');
+    }
+  },[])
   const generatePassword = (length = 5) => {
     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let newPassword = '';
@@ -40,6 +46,7 @@ const Auth = () => {
             dispatch(signup({ name, email, password }, navigate))
             
         } else {
+            
             dispatch(login({ email, password }, navigate))
         
         }
@@ -51,6 +58,10 @@ const Auth = () => {
         setpassword("")
 
     }
+
+    const handleLogin = () => {
+        window.location.href = "http://localhost:5000/api/auth/google";
+    };
 
     return (
         <section className="auth-section">
@@ -130,20 +141,23 @@ const Auth = () => {
                     </button>
                     </div>):(<></>)
                     }
-
-                    
-
                 </label>
                     <button type='submit' className='auth-btn' >
                         {issignup ? "Sign up" : "Log in"}
                     </button>
                 </form>
+
+                <button onClick={()=>handleLogin()}>
+                    CONTINUE WITH GOOGLE
+                </button>
+                
                 <p>
                     {issignup ? "Already have an account?" : "Don't have an account"}
                     <button type='button' className='handle-switch-btn' onClick={handleswitch}>
                         {issignup ? "Log in" : "Sign up"}
                     </button>
                 </p>
+
             </div>
         </section>
     )

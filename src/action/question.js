@@ -3,7 +3,16 @@ import * as api from "../api"
 export const askquestion = (questiondata, navigate) => async (dispatch) => {
     try {
         const { data } = await api.postquestion(questiondata);
-        dispatch({ type: "POST_QUESTION", payload: data });
+        console.log("in frontend",data);
+        if(data.dailylimit){
+
+            dispatch({ type: "POST_QUESTION", payload: data });
+            alert("you have successfuly posted a question")
+
+        }
+        else{
+            alert("daily limit is reached")
+        }
         dispatch(fetchallquestion())
         navigate("/")
     } catch (error) {
