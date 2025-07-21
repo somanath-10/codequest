@@ -24,10 +24,8 @@ const AuthCallback = () => {
 console.log("third");
       localStorage.setItem("Profile", JSON.stringify(profile));
       console.log("fourth")
-      setTimeout(() => {
-  navigate("/");
-}, 1000); // small buffer
-
+      
+      window.location.href="/";
 
     } else {
       navigate("/Auth");
