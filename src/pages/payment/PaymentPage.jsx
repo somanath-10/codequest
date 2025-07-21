@@ -28,7 +28,9 @@ const PricingPage = () => {
           navigate("/");
         }
         console.log("in payment",res)
-        settoken1(res.json());
+        const response = await res.json();
+
+        settoken1(response);
 
     }
 
