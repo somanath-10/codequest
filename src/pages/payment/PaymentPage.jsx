@@ -16,7 +16,7 @@ const PricingPage = () => {
 
     const token12 = async()=>{
         const res = await fetch("https://codequest-backend-9dso.onrender.com/user/getuserdetails", {
-  method: "GET",
+  method: "POST",
   headers: {
     "Authorization": `Bearer ${token}`, // if required
     "Content-Type": "application/json",
