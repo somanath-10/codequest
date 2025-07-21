@@ -18,12 +18,11 @@ const PricingPage = () => {
         const res = await fetch("https://codequest-backend-9dso.onrender.com/user/getuserdetails", {
   method: "POST",
   headers: {
-    "Authorization": `Bearer ${token}`, // if required
+    Authorization: `Bearer ${token?.token}`,
     "Content-Type": "application/json",
   },
     body: JSON.stringify({ userid:token.existingUser._id }), // ✅ Sending userId in request body
 
-  credentials: "include", // if you're using cookies
 });
         if(!res || res?.existingUser === null){
           navigate("/");
