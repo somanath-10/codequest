@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom';
 const PricingPage = () => {
     
     const user1 = useSelector((state)=>state.currentuserreducer)
+    const token = JSON.parse(localStorage.getItem("Profile"));
     console.log(token.existingUser);
     
-    const token = JSON.parse(localStorage.getItem("Profile"));
     
     const navigate = useNavigate();
     const[token1,settoken1] = useState();
