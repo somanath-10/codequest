@@ -89,6 +89,7 @@ function AcceptReq() {
                 typeof req === "object" ? (
                   <li key={req._id}>
                     <span className="font-medium">{req.name}</span> (<code>{req._id}</code>)<button onClick={()=>acceptafriend(req._id)}>Accept</button>
+                    {" "}
                     <button onClick={()=>rejectafriend(req._id)}>Reject</button>
                   </li>
                 ) : (
