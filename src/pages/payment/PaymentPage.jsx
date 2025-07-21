@@ -6,16 +6,25 @@ import { useNavigate } from 'react-router-dom';
 const PricingPage = () => {
     
     const user1 = useSelector((state)=>state.currentuserreducer)
-    const token = JSON.parse(localStorage.getItem("Profile"));
     console.log(token.existingUser);
-
-
-  const navigate = useNavigate();
+    
+    
+    const navigate = useNavigate();
     const[token1,settoken1] = useState();
-useEffect(()=>{
+    useEffect(()=>{
+  const token = JSON.parse(localStorage.getItem("Profile"));
 
     const token12 = async()=>{
-        const res = await fetch("https://codequest-backend-9dso.onrender.com/user/getuserdetails");
+        const res = await fetch("https://codequest-backend-9dso.onrender.com/user/getuserdetails", {
+  method: "GET",
+  headers: {
+    "Authorization": `Bearer ${token}`, // if required
+    "Content-Type": "application/json",
+  },
+    body: JSON.stringify({ userid:token?.existingUser._id }), // ✅ Sending userId in request body
+
+  credentials: "include", // if you're using cookies
+});
         if(!res || res?.existingUser === null){
           navigate("/");
         }
