@@ -19,7 +19,9 @@ useEffect(()=>{
         if(!res || res?.existingUser === null){
           navigate("/");
         }
-        settoken1(res);
+        console.log("in payment",res)
+        settoken1(res.json());
+
     }
 
     token12();
