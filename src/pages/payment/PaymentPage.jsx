@@ -1,12 +1,28 @@
+import { useEffect, useState } from 'react';
 import Leftsidebar from '../../Comnponent/Leftsidebar/Leftsidebar';
 import RazorpayComponent from './RazorpayComponent';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 const PricingPage = () => {
     
     const user1 = useSelector((state)=>state.currentuserreducer)
     const token = JSON.parse(localStorage.getItem("Profile"));
     console.log(token.existingUser);
 
+
+  const navigate = useNavigate();
+    const[token1,settoken1] = useState();
+useEffect(()=>{
+
+    const token12 = async()=>{
+        const res = await fetch("https://codequest-backend-9dso.onrender.com/user/getuserdetails");
+        if(!res || res?.existingUser === null){
+          navigate("/");
+        }
+        settoken1(res);
+    }
+},[])
+    
     const user = {
       id: token.existingUser._id,
       name: token.existingUser.name,
@@ -30,23 +46,23 @@ const PricingPage = () => {
               </div>
 
         <div className="max-w-md mx-auto mt-8 p-6 bg-white shadow-lg rounded-xl border border-gray-200">
-          {token?.existingUser?.subscription && (
+          {token1?.existingUser?.subscription && (
             <div className="space-y-4">
               <h2 className="text-2xl font-bold text-indigo-600">
-                {token.existingUser.subscription.plan} Plan
+                {token1.existingUser.subscription.plan} Plan
               </h2>
 
               <div className="text-gray-700">
                 <span className="font-medium">Questions Posted Today:</span>{" "}
-                {token.existingUser.subscription.questionsPostedToday}
+                {token1.existingUser.subscription.questionsPostedToday}
               </div>
 
-              {token.existingUser.subscription.plan === "gold" ? (
+              {token1.existingUser.subscription.plan === "gold" ? (
                 <div className="text-green-600 font-semibold">Unlimited Daily Limit</div>
               ) : (
                 <div className="text-gray-700">
                   <span className="font-medium">Daily Limit:</span>{" "}
-                  {token.existingUser.subscription.dailyLimit}
+                  {token1.existingUser.subscription.dailyLimit}
                 </div>
               )}
             </div>
