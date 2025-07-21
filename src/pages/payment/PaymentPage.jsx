@@ -8,6 +8,7 @@ const PricingPage = () => {
     const user1 = useSelector((state)=>state.currentuserreducer)
     console.log(token.existingUser);
     
+    const token = JSON.parse(localStorage.getItem("Profile"));
     
     const navigate = useNavigate();
     const[token1,settoken1] = useState();
@@ -21,7 +22,7 @@ const PricingPage = () => {
     "Authorization": `Bearer ${token}`, // if required
     "Content-Type": "application/json",
   },
-    body: JSON.stringify({ userid:token?.existingUser._id }), // ✅ Sending userId in request body
+    body: JSON.stringify({ userid:token.existingUser._id }), // ✅ Sending userId in request body
 
   credentials: "include", // if you're using cookies
 });
