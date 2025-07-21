@@ -4,7 +4,7 @@ export const askquestion = (questiondata, navigate) => async (dispatch) => {
     try {
         const { data } = await api.postquestion(questiondata);
         console.log("in frontend",data);
-        if(data.dailylimit){
+        if(data.dailylimit || data === "Posted a question successfully"){
 
             dispatch({ type: "POST_QUESTION", payload: data });
             alert("you have successfuly posted a question")

@@ -26,7 +26,7 @@ const WhatsAppStyleChat = () => {
   // Fetch user chats
   const fetchChats = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/chat/chats`, {
+      const res = await fetch(`https://codequest-backend-9dso.onrender.com/chat/chats`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -39,7 +39,7 @@ const WhatsAppStyleChat = () => {
   // Fetch messages for a chat
   const fetchMessages = async (chatId) => {
     try {
-      const res = await fetch(`http://localhost:5000/chat/messages/${chatId}`, {
+      const res = await fetch(`https://codequest-backend-9dso.onrender.com/chat/messages/${chatId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -56,7 +56,7 @@ const WhatsAppStyleChat = () => {
   // Create or reuse chat with user
   const openChat = async (otherUserId) => {
     try {
-      const res = await fetch(`http://localhost:5000/chat/chat`, {
+      const res = await fetch(`https://codequest-backend-9dso.onrender.com/chat/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const WhatsAppStyleChat = () => {
   const send = async () => {
     if (!text || !activeChat) return;
     try {
-      await fetch(`http://localhost:5000/chat/message`, {
+      await fetch(`https://codequest-backend-9dso.onrender.com/chat/message`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

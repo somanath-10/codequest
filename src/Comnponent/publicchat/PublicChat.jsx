@@ -27,7 +27,7 @@ const PublicChat = () => {
   console.log("messages",messages);
 
   const fetchMessages = async () => {
-    const res = await fetch("http://localhost:5000/public-chat", {
+    const res = await fetch("https://codequest-backend-9dso.onrender.com/public-chat", {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await res.json();
@@ -35,7 +35,7 @@ const PublicChat = () => {
   };
 
   const fetchUsers = async () => {
-    const res = await fetch("http://localhost:5000/user", {
+    const res = await fetch("https://codequest-backend-9dso.onrender.com/user", {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await res.json();
@@ -44,7 +44,7 @@ const PublicChat = () => {
 
   const sendMessage = async () => {
     if (!text) return;
-    await fetch("http://localhost:5000/public-chat", {
+    await fetch("https://codequest-backend-9dso.onrender.com/public-chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

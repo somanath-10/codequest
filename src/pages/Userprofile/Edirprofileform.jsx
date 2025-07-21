@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateprofile } from '../../action/users'
 import './Userprofile.css'
-const Edirprofileform = ({ currentuser, setswitch }) => {
+const Editprofileform = ({ currentuser, setswitch }) => {
   const [name, setname] = useState(currentuser?.result?.name)
   const [about, setabout] = useState(currentuser?.result?.about)
   const [tags, settags] = useState([])
@@ -13,7 +13,7 @@ const Edirprofileform = ({ currentuser, setswitch }) => {
     if (tags[0] === '' || tags.length === 0) {
       alert("update tags field")
     }else{
-      dispatch(updateprofile(currentuser?.result?._id,{name,about,tags}))
+      dispatch(updateprofile(currentuser?.existingUser._id,{name,about,tags}))
     }
     setswitch(false)
   }
@@ -47,4 +47,4 @@ const Edirprofileform = ({ currentuser, setswitch }) => {
   )
 }
 
-export default Edirprofileform
+export default Editprofileform

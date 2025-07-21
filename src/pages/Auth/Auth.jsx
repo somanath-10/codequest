@@ -60,7 +60,7 @@ const Auth = () => {
     }
 
     const handleLogin = () => {
-        window.location.href = "http://localhost:5000/api/auth/google";
+        window.location.href = "https://codequest-backend-9dso.onrender.com/api/auth/google";
     };
 
     return (

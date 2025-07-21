@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const API=axios.create({
-    // baseURL:"https://null-intern-backend-2.onrender.com"
-    baseURL:"http://localhost:5000"
+    baseURL:"https://codequest-backend-9dso.onrender.com"
 });
 
 API.interceptors.request.use((req)=>{

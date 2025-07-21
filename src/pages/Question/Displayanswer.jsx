@@ -19,7 +19,7 @@ const Displayanswer = ({ question, handleshare }) => {
           <div className="question-actions-user">
             <div>
               <button type='button' onClick={handleshare} >Share</button>
-              {user?.result?._id === ans?.userid && (
+              {user?.existingUser?._id === ans?.userid && (
                 <button type='button' onClick={() => handledelete(ans._id, question.noofanswers)}>Delete</button>
               )}
             </div>

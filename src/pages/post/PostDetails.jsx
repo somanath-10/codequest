@@ -10,7 +10,7 @@ const PostDetails = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/post/${postId}`);
+        const res = await fetch(`https://codequest-backend-9dso.onrender.com/post/${postId}`);
         const data = await res.json();
         if (data.success) {
           setPost(data.post);

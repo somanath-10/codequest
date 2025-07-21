@@ -6,7 +6,7 @@ const Displayquestion = ({slidein}) => {
   return (
     <div className="home-container-1">
       <Leftsidebar slidein={slidein}/>
-      <div className="home-container-2">
+      <div className="home-container-2 pt-16 ml-0 md:ml-[240px] px-4">
         <Qustiondetails/>
         <Rightsidebar/>
       </div>

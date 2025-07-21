@@ -41,7 +41,7 @@ function PostPicture() {
       formData.append("caption", caption);
       formData.append("userId", token);
 
-      const response = await fetch("http://localhost:5000/post/create", {
+      const response = await fetch("https://codequest-backend-9dso.onrender.com/post/create", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

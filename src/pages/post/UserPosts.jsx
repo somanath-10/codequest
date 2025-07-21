@@ -8,7 +8,7 @@ console.log("user",userId)
   useEffect(() => {
     const fetchUserPosts = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/post/user/${userId}`);
+        const res = await fetch(`https://codequest-backend-9dso.onrender.com/post/user/${userId}`);
         const data = await res.json();
         if (data.success) {
           setPosts(data.userresponse);
@@ -38,7 +38,7 @@ const deletePost = async (postId) => {
   if (!window.confirm("Are you sure you want to delete this post?")) return;
 
   try {
-    const res = await fetch(`http://localhost:5000/post/user/delete/${postId}`, {
+    const res = await fetch(`https://codequest-backend-9dso.onrender.com/post/user/delete/${postId}`, {
       method: 'DELETE',
     });
 

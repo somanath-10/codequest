@@ -13,7 +13,7 @@ const PublicFeed = () => {
   // Fetch posts on mount
   const fetchPosts = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/post/allposts`, {
+      const res = await fetch(`https://codequest-backend-9dso.onrender.com/post/allposts`, {
         headers: {
           Authorization: `Bearer ${token?.token}`,
         },
@@ -36,7 +36,7 @@ const PublicFeed = () => {
   // Like a post
   const likePost = async (postId) => {
     try {
-      const res = await fetch(`http://localhost:5000/post/like/${postId}`, {
+      const res = await fetch(`https://codequest-backend-9dso.onrender.com/post/like/${postId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const PublicFeed = () => {
     if (!commentText) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/post/comment/${postId}`, {
+      const res = await fetch(`https://codequest-backend-9dso.onrender.com/post/comment/${postId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

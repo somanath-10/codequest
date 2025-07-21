@@ -1,5 +1,5 @@
 // const REACT_APP_BASE_URL = "https://null-intern-backend-2.onrender.com";
-const REACT_APP_BASE_URL = "http://localhost:5000"
+const REACT_APP_BASE_URL = "https://codequest-backend-9dso.onrender.com"
 
 export const endpoints = {
     SEND_OTP: REACT_APP_BASE_URL + "/api/request-otp",

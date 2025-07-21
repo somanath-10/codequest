@@ -17,7 +17,7 @@ const Qustiondetails = () => {
     const user =useSelector((state)=>state.currentuserreducer)
     const location=useLocation()
     const navigate=useNavigate()
-    const url="https://null-intern-backend-2.onrender.com/"
+    const url=""
     const handlepostans=(e,answerlength)=>{
         e.preventDefault();
         if(user ===null){
@@ -30,8 +30,8 @@ const Qustiondetails = () => {
                 dispatch(postanswer({id,
                     noofanswers:answerlength+1,
                     answerbody:answer,
-                    userid:user.result._id,                 
-                    useranswered:user.result.name}));
+                    userid:user.existingUser._id,                 
+                    useranswered:user.existingUser.name}));
                 setanswer("")
             }
         }
@@ -88,7 +88,7 @@ const Qustiondetails = () => {
                                         <button type='button' onClick={handleshare}>
                                             Share
                                         </button>
-                                        {user?.result?._id ===question?.userid && (
+                                        {user?.existingUser?._id ===question?.userid && (
                                             <button type='button' onClick={handledelete}>Delete</button>
                                         )}
                                     </div>

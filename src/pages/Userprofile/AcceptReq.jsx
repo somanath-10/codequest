@@ -6,19 +6,22 @@ import Leftsidebar from '../../Comnponent/Leftsidebar/Leftsidebar';
 
 function AcceptReq() {
     const navigate = useNavigate();
-
-
     const [currentuser,setCurrentUSer] =useState({});
-
-console.log("currentuser",currentuser)
     const[requests,setRequests] = useState({});
     console.log("requests",requests);
 
-    const handlerequests = async()=>{
-        const res =await getFriendRequests(currentuser.existingUser?._id);
-        console.log("res",res)
-        setRequests(res);
-        console.log(requests);
+    const handlerequests = async(userId)=>{
+    console.log("userId",userId)
+        
+          const res1 = await fetch(`https://codequest-backend-9dso.onrender.com/friend/requests`,{
+            method:"POST",
+            headers:{"Content-type":"application/json"},
+            body:JSON.stringify({userId:userId}),
+          });
+          const data = await res1.json();
+          console.log("res1",data);
+          setRequests(data)
+        
     }
     useEffect(()=>{
         const user = JSON.parse(localStorage.getItem("Profile"));
@@ -28,7 +31,9 @@ console.log("currentuser",currentuser)
             navigate("/Auth");
         }
         setCurrentUSer(user);
-        handlerequests();
+        console.log("user",user);
+        console.log(user?.existingUser._id);
+        handlerequests(user?.existingUser._id);
     },[])
     const sentRequests = requests?.user?.sentRequests|| [];
   const receivedRequests =requests?.user?.receivedRequests|| [];
@@ -39,7 +44,7 @@ console.log("currentuser",currentuser)
     const response = await respondToRequest(fromUserId,toUserId);
     console.log("responce of accept friend",response);
     alert("friend request accepted");
-    handlerequests();
+    handlerequests(currentuser?.existingUser._id);
   }
 
   const rejectafriend = async(fromUserId)=>{
@@ -48,7 +53,7 @@ console.log("currentuser",currentuser)
     const responce = await respondToRequest2(fromUserId,toUserId);
     console.log("rejected a friend",responce);
     alert("friend is rejected")
-    handlerequests();
+    handlerequests(currentuser?.existingUser._id);
 
   }
 

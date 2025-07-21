@@ -32,7 +32,7 @@ const RazorpayComponent = ({ amount = 300, planName = "Bronze", user }) => {
         }
         console.log("third")
       // 1. Call backend to create an order
-      const res = await fetch("http://localhost:5000/payment/subscribe", {
+      const res = await fetch("https://codequest-backend-9dso.onrender.com/payment/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({id:user.id,plan: planName}),
@@ -61,7 +61,7 @@ const RazorpayComponent = ({ amount = 300, planName = "Bronze", user }) => {
             console.log(response.razorpay_payment_id)
             console.log(response.razorpay_signature)
           // 3. Send payment info back to backend to verify
-          const verifyRes = await fetch("http://localhost:5000/payment/verify", {
+          const verifyRes = await fetch("https://codequest-backend-9dso.onrender.com/payment/verify", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
