@@ -21,6 +21,8 @@ useEffect(()=>{
         }
         settoken1(res);
     }
+
+    token12();
 },[])
     
     const user = {
