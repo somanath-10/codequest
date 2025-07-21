@@ -27,8 +27,8 @@ const PricingPage = () => {
         if(!res || res?.existingUser === null){
           navigate("/");
         }
-        console.log("in payment",res)
         const response = await res.json();
+        console.log("in payment",response)
 
         settoken1(response);
 
