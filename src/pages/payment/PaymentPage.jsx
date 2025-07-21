@@ -13,7 +13,6 @@ const PricingPage = () => {
     const navigate = useNavigate();
     const[token1,settoken1] = useState();
     useEffect(()=>{
-  const token = JSON.parse(localStorage.getItem("Profile"));
 
     const token12 = async()=>{
         const res = await fetch("https://codequest-backend-9dso.onrender.com/user/getuserdetails", {
