@@ -93,7 +93,7 @@ const Auth = () => {
                         )}
                     </div>
 
-                    <div style={{ position: "relative" }}>
+                    <div style={{ position: "relative" }} className=' ml-3'>
                         <input
                         type={isVisible ? 'text' : 'password'}
                         name="password"
