@@ -7,6 +7,7 @@ const WhatsAppStyleChat = () => {
     const [text, setText] = useState("");
     const navigate = useNavigate();
     const [profile,settoken1] = useState("");
+  const token1 = JSON.parse(localStorage.getItem("Profile"));
 
     const token = profile?.token;
     
@@ -19,7 +20,7 @@ const WhatsAppStyleChat = () => {
                                     Authorization: `Bearer ${token?.token}`,
                                     "Content-Type": "application/json",
                                   },
-                                    body: JSON.stringify({ userid:token.existingUser._id }), // ✅ Sending userId in request body
+                                    body: JSON.stringify({ userid:token1.existingUser._id }), // ✅ Sending userId in request body
 
                                 });
                     const response = await res.json();
