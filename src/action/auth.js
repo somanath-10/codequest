@@ -9,7 +9,7 @@ export const signup =(authdata,naviagte)=> async(dispatch)=>{
         dispatch(fetchallusers())
         naviagte("/")
     } catch (error) {
-        console.log(error.message);
+        console.log(error.B.data.message);
     }
 }
 export const login =(authdata,naviagte)=> async(dispatch)=>{
