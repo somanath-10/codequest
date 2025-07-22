@@ -40,10 +40,12 @@ const Auth = () => {
             alert("Enter email and password")
         }
         if (issignup) {
-            if (!name) {
-                alert("Enter a name to continue")
+            if (!name || !password ||!email) {
+                alert("Enter all details to continue")
             }
-            dispatch(signup({ name, email, password }, navigate))
+            else{
+                dispatch(signup({ name, email, password }, navigate))
+            }
             
         } else {
             
@@ -87,13 +89,13 @@ const Auth = () => {
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
                         <h4>Password</h4>
                         {!issignup && (
-                        <button onClick={()=>navigate('/request-otp')} className='handle-switch-btn' style={{ color: "#007ac6", fontSize: "13px" }}>
+                        <button onClick={()=>navigate('/request-otp')} className='handle-switch-btn ml-5' style={{ color: "#007ac6", fontSize: "13px" }}>
                             Forgot Password?
                         </button>
                         )}
                     </div>
 
-                    <div style={{ position: "relative" }} className=' ml-3'>
+                    <div style={{ position: "relative" }}>
                         <input
                         type={isVisible ? 'text' : 'password'}
                         name="password"
@@ -106,7 +108,6 @@ const Auth = () => {
                         onClick={() => setIsVisible(!isVisible)}
                         style={{
                             position: 'absolute',
-                            right: 10,
                             top: '50%',
                             transform: 'translateY(-50%)',
                             background: 'none',
@@ -114,14 +115,21 @@ const Auth = () => {
                             color: '#007ac6',
                             cursor: 'pointer'
                         }}
+
+                        
                         >
                         {isVisible ? 'Hide' : 'Show'}
                         </button>
+                    </div>
+
+                    <div>
+                        
                     </div>
                     {
                         issignup ? (<div className="password-generator" style={{ marginTop: '12px' }}>
                     <h4>Need a strong password?</h4>
                     <button
+                    type='button'
                         onClick={() => generatePassword(12)}
                         style={{
                         marginTop: '6px',
@@ -147,12 +155,12 @@ const Auth = () => {
                     </button>
                 </form>
 
-                <button onClick={()=>handleLogin()}>
+                <button onClick={()=>handleLogin()} className='bg-slate-400 px-4 oy-2 rounded-md mt-5 font-semibold'>
                     CONTINUE WITH GOOGLE
                 </button>
                 
-                <p>
-                    {issignup ? "Already have an account?" : "Don't have an account"}
+                <p className=' mt-2'>
+                    {issignup ? "Already have an account?" : "Don't have an account?"}{" "}
                     <button type='button' className='handle-switch-btn' onClick={handleswitch}>
                         {issignup ? "Log in" : "Sign up"}
                     </button>
