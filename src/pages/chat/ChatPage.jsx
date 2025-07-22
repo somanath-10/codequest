@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const WhatsAppStyleChat = () => {
     const [chats, setChats] = useState([]);
     const [activeChat, setActiveChat] = useState(null);
     const [messages, setMessages] = useState([]);
     const [text, setText] = useState("");
+    const navigate = useNavigate();
+    const [profile,settoken1] = useState("");
+
+    const token = profile?.token;
     useEffect(() => {
         fetchChats();
     }, []);
@@ -14,8 +18,29 @@ const WhatsAppStyleChat = () => {
         }
       }, [activeChat]);
 
-  const profile = JSON.parse(localStorage.getItem("Profile"));
-  const token = profile?.token;
+           useEffect(()=>{
+
+                const token12 = async()=>{
+                    const res = await fetch("https://codequest-backend-9dso.onrender.com/user/getuserdetails", {
+                                  method: "POST",
+                                  headers: {
+                                    Authorization: `Bearer ${token?.token}`,
+                                    "Content-Type": "application/json",
+                                  },
+                                    body: JSON.stringify({ userid:token.existingUser._id }), // ✅ Sending userId in request body
+
+                                });
+                    const response = await res.json();
+                    console.log("in payment",response)
+
+                    settoken1(response);
+
+                }
+
+                token12();
+            },[])
+
+
 
   if (!token) {
     return <div className="text-red-600 p-4">Please login to access chat.</div>;
@@ -49,11 +74,7 @@ const WhatsAppStyleChat = () => {
     }
   };
 
-  // On mount
 
-  // On active chat change
-
-  // Create or reuse chat with user
   const openChat = async (otherUserId) => {
     try {
       const res = await fetch(`https://codequest-backend-9dso.onrender.com/chat/chat`, {
