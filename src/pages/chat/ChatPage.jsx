@@ -9,19 +9,11 @@ const WhatsAppStyleChat = () => {
     const [profile,settoken1] = useState("");
 
     const token = profile?.token;
-    useEffect(() => {
-        fetchChats();
-    }, []);
-      useEffect(() => {    
-        if (activeChat?._id) {
-          fetchMessages(activeChat._id);
-        }
-      }, [activeChat]);
-
-           useEffect(()=>{
-
-                const token12 = async()=>{
-                    const res = await fetch("https://codequest-backend-9dso.onrender.com/user/getuserdetails", {
+    
+    useEffect(()=>{
+      
+      const token12 = async()=>{
+        const res = await fetch("https://codequest-backend-9dso.onrender.com/user/getuserdetails", {
                                   method: "POST",
                                   headers: {
                                     Authorization: `Bearer ${token?.token}`,
@@ -34,12 +26,20 @@ const WhatsAppStyleChat = () => {
                     console.log("in payment",response)
 
                     settoken1(response);
-
-                }
-
-                token12();
-            },[])
-
+                    
+                  }
+                  
+                  token12();
+                },[])
+                
+                useEffect(() => {
+                    fetchChats();
+                }, [profile]);
+                  useEffect(() => {    
+                    if (activeChat?._id) {
+                      fetchMessages(activeChat._id);
+                    }
+                  }, [activeChat]);
 
 
   if (!token) {
