@@ -83,6 +83,7 @@ const Auth = () => {
                             setemail(e.target.value);
                         }} />
                     </label>
+                <label htmlFor="password">
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
                         <h4>Password</h4>
                         {!issignup && (
@@ -91,7 +92,6 @@ const Auth = () => {
                         </button>
                         )}
                     </div>
-                <label htmlFor="password">
 
                     <div style={{ position: "relative" }}>
                         <input
