@@ -9,7 +9,12 @@ export const signup =(authdata,naviagte)=> async(dispatch)=>{
         dispatch(fetchallusers())
         naviagte("/")
     } catch (error) {
-        console.log(error);
+        if (error.response && error.response.status === 409) {
+            alert("User already exists. Please login instead.");
+        } else {
+            console.error("Signup error:", error);
+            alert("Something went wrong during signup.");
+        }
     }
 }
 export const login =(authdata,naviagte)=> async(dispatch)=>{
