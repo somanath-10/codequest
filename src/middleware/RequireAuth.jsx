@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const RequireAuth = () => {
-  const currentUser = useSelector((state)=>state.currentuserreducer)  
+  const currentUser = JSON.parse(localStorage.getItem("Profile")); 
   const location   = useLocation();
   console.log(currentUser);
   if (!currentUser) {
