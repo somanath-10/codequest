@@ -2,7 +2,14 @@ import React from 'react'
 import Leftsidebar from '../../Comnponent/Leftsidebar/Leftsidebar'
 import Rightsidebar from '../../Comnponent/Rightsidebar/Rightsidebar'
 import Qustiondetails from './Qustiondetails'
+import { useNavigate } from 'react-router-dom'
 const Displayquestion = ({slidein}) => {
+    const token = JSON.parse(localStorage.getItem("Profile"));
+    const navigate = useNavigate();
+if(!token){
+  alert("login required");
+  navigate("/Auth");
+}
   return (
     <div className="home-container-1">
       <Leftsidebar slidein={slidein}/>

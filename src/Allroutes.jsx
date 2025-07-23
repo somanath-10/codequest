@@ -44,23 +44,21 @@ function Allroutes({slidein,handleslidein}) {
         <Route path='/googleauth' element={<GoogleLoginButton/>}/>
         <Route path='/auth/callback' element={<AuthCallback/>}/>
 
-          <Route path='/post/:postId' element={<PostDetails/>}/>
-              <Route element={<RequireAuth />}>
-          
-                
+        <Route path='/post/:postId' element={<PostDetails/>}/>
         <Route path='/Question/:id' element={<Displayquestion slidein={slidein} handleslidein={handleslidein}/>}/>
-        <Route path='/Users/:id' element={<Userprofile slidein={slidein} handleslidein={handleslidein}/>}/>
-        <Route path='/login-history' element={<LoginHistoryPage/>}/>
-        <Route path='/payment' element={<PaymentPage/>}/>
-        <Route path='/requests' element={<AcceptReq/>}/>
+        <Route element={<RequireAuth />}>  
+          <Route path='/Users/:id' element={<Userprofile slidein={slidein} handleslidein={handleslidein}/>}/>
+          <Route path='/login-history' element={<LoginHistoryPage/>}/>
+          <Route path='/payment' element={<PaymentPage/>}/>
+          <Route path='/requests' element={<AcceptReq/>}/>
           <Route path='/post' element={<PublicFeed/>}/>
           <Route path='/post/create' element={<PostPicture/>}/>
 
-        <Route path='/post/user' element={<UserPosts/>}/>
-        <Route path='/chat' element={<WhatsAppStyleChat/>}/>
-        <Route path='/public-chat' element={<PublicChat/>}/>
+          <Route path='/post/user' element={<UserPosts/>}/>
+          <Route path='/chat' element={<WhatsAppStyleChat/>}/>
+          <Route path='/public-chat' element={<PublicChat/>}/>
         
-              </Route>
+        </Route>
         
     </Routes>
     </div>
