@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import "./Auth.css"
 import icon from '../../assets/icon.png'
 import Aboutauth from './Aboutauth'
@@ -9,13 +9,16 @@ import { setcurrentuser } from '../../action/currentuser'
 const Auth = () => {
 
   const [isVisible, setIsVisible] = useState(false);
-
+const location = useLocation();
   const token = JSON.parse(localStorage.getItem("Profile"));
 
 useEffect(() => {
   const token = JSON.parse(localStorage.getItem("Profile"));
   if (token) {
-    dispatch(setcurrentuser(token)); // make sure Redux is synced
+    dispatch(setcurrentuser(token));
+    if (location.pathname === '/Auth') {
+      navigate('/');
+    }
   }
 }, []);
 
