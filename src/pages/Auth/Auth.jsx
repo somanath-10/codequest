@@ -5,7 +5,7 @@ import "./Auth.css"
 import icon from '../../assets/icon.png'
 import Aboutauth from './Aboutauth'
 import { signup, login } from '../../action/auth'
-import { setcurrentuser } from '../../action/currentuser'
+import currentuserreducer from '../../reducers/currentuser'
 const Auth = () => {
 
   const [isVisible, setIsVisible] = useState(false);
@@ -15,7 +15,7 @@ const location = useLocation();
 useEffect(() => {
   const token = JSON.parse(localStorage.getItem("Profile"));
   if (token) {
-    dispatch(setcurrentuser(token));
+    dispatch(currentuserreducer(token));
     if (location.pathname === '/Auth') {
       navigate('/');
     }
