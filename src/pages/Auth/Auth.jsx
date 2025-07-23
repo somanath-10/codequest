@@ -5,7 +5,8 @@ import "./Auth.css"
 import icon from '../../assets/icon.png'
 import Aboutauth from './Aboutauth'
 import { signup, login } from '../../action/auth'
-import currentuserreducer from '../../reducers/currentuser'
+import { setCurrentUser } from '../../action/currentuser'
+
 const Auth = () => {
 
   const [isVisible, setIsVisible] = useState(false);
@@ -15,12 +16,13 @@ const location = useLocation();
 useEffect(() => {
   const token = JSON.parse(localStorage.getItem("Profile"));
   if (token) {
-    dispatch(currentuserreducer(token));
+    dispatch(setCurrentUser(token));
     if (location.pathname === '/Auth') {
       navigate('/');
     }
   }
 }, []);
+
 
 
   const generatePassword = (length = 5) => {

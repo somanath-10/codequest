@@ -1,6 +1,5 @@
-export const setcurrentuser=(data)=>{
-    return{
-        type:"FETCH_CURRENT_USER",
-        payload:data,
-    };
-};
+// actions/currentUser.js
+export const setCurrentUser = (data) => ({
+  type: "FETCH_CURRENT_USER",
+  payload: data,
+});
