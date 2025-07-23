@@ -28,6 +28,7 @@ const WhatsAppStyleChat = () => {
     try {
       const res = await fetch(`https://codequest-backend-9dso.onrender.com/chat/chats`, {
         headers: { Authorization: `Bearer ${token}` },
+        body:JSON.stringify({userid:profile?.existingUser._id})
       });
       const data = await res.json();
       setChats(data.chats);
@@ -62,7 +63,7 @@ const WhatsAppStyleChat = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ otherUserId }),
+        body: JSON.stringify({ userid:profile?.existingUser._id , otherUserId }),
       });
       const data = await res.json();
       setActiveChat(data.chat);
@@ -82,7 +83,7 @@ const WhatsAppStyleChat = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ chatId: activeChat._id, text }),
+        body: JSON.stringify({userid:profile?.existingUser._id,chatId: activeChat._id, text }),
       });
       setText("");
       fetchMessages(activeChat._id);
