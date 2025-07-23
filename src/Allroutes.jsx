@@ -46,8 +46,8 @@ function Allroutes({slidein,handleslidein}) {
 
           <Route path='/post/:postId' element={<PostDetails/>}/>
               <Route element={<RequireAuth />}>
-              
-              
+          
+                
         <Route path='/Question/:id' element={<Displayquestion slidein={slidein} handleslidein={handleslidein}/>}/>
         <Route path='/Users/:id' element={<Userprofile slidein={slidein} handleslidein={handleslidein}/>}/>
         <Route path='/login-history' element={<LoginHistoryPage/>}/>
