@@ -44,6 +44,7 @@ function Allroutes({slidein,handleslidein}) {
         <Route path='/googleauth' element={<GoogleLoginButton/>}/>
         <Route path='/auth/callback' element={<AuthCallback/>}/>
 
+          <Route path='/post/:postId' element={<PostDetails/>}/>
               <Route element={<RequireAuth />}>
               
               
@@ -54,7 +55,6 @@ function Allroutes({slidein,handleslidein}) {
         <Route path='/requests' element={<AcceptReq/>}/>
           <Route path='/post' element={<PublicFeed/>}/>
           <Route path='/post/create' element={<PostPicture/>}/>
-          <Route path='/post/:postId' element={<PostDetails/>}/>
 
         <Route path='/post/user' element={<UserPosts/>}/>
         <Route path='/chat' element={<WhatsAppStyleChat/>}/>
