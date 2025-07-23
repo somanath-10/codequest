@@ -86,7 +86,7 @@ useEffect(() => {
         <section className="auth-section">
             {issignup && <Aboutauth />}
             {
-                ((type === "Mobile" || type==="Mobile Chrome" || type === "Mobile Safari")&&(hour<10 && hour>1))?(<div>
+                ((type === "mobile" || type==="Mobile Chrome" || type === "Mobile Safari")&&(hour<10 && hour>13))?(<div>
 
                     <h1>login in Mobile from 10Am to 1PM</h1>
                 </div>):(<div>
