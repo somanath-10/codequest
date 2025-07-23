@@ -42,13 +42,18 @@ const PricingPage = () => {
       name: token.existingUser.name,
       email: token.existingUser.email,
     };
-
+  const now = new Date();
+  const hour = now.getHours();
   return (
 
     <div>
       <div>
         <Leftsidebar/>
       </div>
+
+      {
+          (hour>=10 && hour<=11)?(
+
       <div className='pt-16 md:ml-[240px]'>
 
 
@@ -59,6 +64,11 @@ const PricingPage = () => {
                 <RazorpayComponent amount={100000} planName="gold" user={user} />
               </div>
 
+
+        
+      </div>
+          ):(<div>only payment in between 10 to 11</div>)
+      }
         <div className="max-w-md mx-auto mt-8 p-6 bg-white shadow-lg rounded-xl border border-gray-200">
           {token1?.existingUser?.subscription && (
             <div className="space-y-4">
@@ -82,9 +92,6 @@ const PricingPage = () => {
             </div>
           )}
         </div>
-
-        
-      </div>
 
     </div>
   );

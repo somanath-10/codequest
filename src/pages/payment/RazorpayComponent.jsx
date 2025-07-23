@@ -101,7 +101,10 @@ const RazorpayComponent = ({ amount = 300, planName = "Bronze", user }) => {
     }
   };
 
+
+
   return (
+
 <button
   onClick={loadRazorpay}
   className="flex mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition duration-200 ease-in-out"
