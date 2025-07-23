@@ -5,7 +5,7 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 const RequireAuth = () => {
   const currentUser = useSelector((state)=>state.currentuserreducer)  
   const location   = useLocation();
-
+  console.log(currentUser);
   if (!currentUser) {
     // Not logged in ➜ send to /Auth, but remember where they were heading.
     return <Navigate to="/Auth" state={{ from: location }} replace />;
