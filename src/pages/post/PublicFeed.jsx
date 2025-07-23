@@ -48,6 +48,9 @@ const PublicFeed = () => {
       });
       const data = await res.json();
       console.log("Like Response:", data);
+      if(data.message === "Already liked"){
+        alert("Already liked");
+      }
       fetchPosts();
     } catch (err) {
       console.error("Error liking post", err);
