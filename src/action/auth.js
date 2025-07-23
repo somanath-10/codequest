@@ -22,7 +22,7 @@ export const login =(authdata,naviagte)=> async(dispatch)=>{
         const{data}=await api.login(authdata);
         console.log("API DATA : ",data);
         if(!data.success){
-            alert(data.message);
+            alert("login in between 10am to 1pm");
         }
         if (data.otpRequired) {
             naviagte('/verify-otp', { state: { email: data.email,success:false } });
