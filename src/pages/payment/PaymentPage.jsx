@@ -66,10 +66,10 @@ const PricingPage = () => {
                 {token1.existingUser.subscription.plan} Plan
               </h2>
 
-              <div className="text-gray-700">
+              {/* <div className="text-gray-700">
                 <span className="font-medium">Questions Posted Today:</span>{" "}
                 {token1.existingUser.subscription.questionsPostedToday}
-              </div>
+              </div> */}
 
               {token1.existingUser.subscription.plan === "gold" ? (
                 <div className="text-green-600 font-semibold">Unlimited Daily Limit</div>
@@ -82,6 +82,8 @@ const PricingPage = () => {
             </div>
           )}
         </div>
+
+        
       </div>
 
     </div>
