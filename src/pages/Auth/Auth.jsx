@@ -5,17 +5,21 @@ import "./Auth.css"
 import icon from '../../assets/icon.png'
 import Aboutauth from './Aboutauth'
 import { signup, login } from '../../action/auth'
+import { setcurrentuser } from '../../action/currentuser'
 const Auth = () => {
 
   const [isVisible, setIsVisible] = useState(false);
 
   const token = JSON.parse(localStorage.getItem("Profile"));
 
-  useEffect(()=>{
-    if(token){
-        navigate('/');
-    }
-  },[])
+useEffect(() => {
+  const token = JSON.parse(localStorage.getItem("Profile"));
+  if (token) {
+    dispatch(setcurrentuser(token)); // make sure Redux is synced
+  }
+}, []);
+
+
   const generatePassword = (length = 5) => {
     const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let newPassword = '';
