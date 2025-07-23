@@ -64,10 +64,10 @@ if (!currentprofile) {
               </div>          
               <div>
                 <h1 className="text-2xl font-semibold text-gray-800">{currentprofile?.name}</h1>
-                <p className="text-gray-500 text-sm mt-1">
+                {/* <p className="text-gray-500 text-sm mt-1">
                   <FontAwesomeIcon icon={faBirthdayCake} className="mr-1 text-pink-500" />
                   Joined {moment(currentprofile?.joinedon).fromNow()}
-                </p>
+                </p> */}
               </div>
             </div>
             {currentuser.existingUser._id === id && ( 
