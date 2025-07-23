@@ -27,7 +27,9 @@ const WhatsAppStyleChat = () => {
   const fetchChats = async () => {
     try {
       const res = await fetch(`https://codequest-backend-9dso.onrender.com/chat/chats`, {
-        headers: { Authorization: `Bearer ${token}` },
+        method:"POST",
+        headers: {           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, },
         body:JSON.stringify({userid:profile?.existingUser._id})
       });
       const data = await res.json();
