@@ -31,7 +31,8 @@ console.log("third");
       window.location.href="/";
 
     } else {
-      navigate("/Auth");
+      console.log("token in auth",token)
+      navigate("/");
     }
   }, [navigate]);
 

@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom'
 const Displayquestion = ({slidein}) => {
     const token = JSON.parse(localStorage.getItem("Profile"));
     const navigate = useNavigate();
-if(!token){
+
+    if(!token){
   alert("login required");
   navigate("/Auth");
 }
