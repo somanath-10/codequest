@@ -67,7 +67,12 @@ const PricingPage = () => {
 
         
       </div>
-          ):(<div>only payment in between 10 to 11</div>)
+          ):(<div className='flex justify-center items-center h-screen md:ml-[240px]'>
+  <h2 className="text-xl font-semibold text-gray-700 text-center">
+    Only payment is allowed between 10AM to 11AM
+  </h2>
+</div>
+)
       }
         <div className="max-w-md mx-auto mt-8 p-6 bg-white shadow-lg rounded-xl border border-gray-200">
           {token1?.existingUser?.subscription && (
