@@ -36,7 +36,7 @@ const AuthCallback = () => {
 
                           const profile = {
         token,
-        response,
+        existingUser:response.existingUser,
       }
       console.log("second")
 
