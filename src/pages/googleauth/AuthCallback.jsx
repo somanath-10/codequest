@@ -7,19 +7,36 @@ const AuthCallback = () => {
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
-    const token = document.cookie
-    .split('; ')
-    .find(row => row.startsWith('token='))
-    ?.split('=')[1];
-    console.log(token)
+    const token = query.get("token");
+    console.log(token);
+
+    const user = jwtDecode(token);
+    console.log("user",user);
     if (token) {
-        const user = jwtDecode(token); // this gives you the user object from the token
+        const user = jwtDecode(token);
         console.log("user",user);
       localStorage.setItem("token", token);
       console.log("first");
-      const profile = {
+
+          const token12 = async()=>{
+            const res = await fetch("https://codequest-backend-9dso.onrender.com/user/getuserdetails", {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${token?.token}`,
+                "Content-Type": "application/json",
+              },
+                body: JSON.stringify({ userid:user._id }), // ✅ Sending userId in request body
+
+            });
+            if(!res || res?.existingUser === null){
+                navigate("/");
+            }
+                    const response = await res.json();
+                    console.log("in payment",response)
+
+                          const profile = {
         token,
-        existingUser:user,
+        response,
       }
       console.log("second")
 
@@ -28,11 +45,23 @@ console.log("third");
       localStorage.setItem("Profile", JSON.stringify(profile));
       console.log("fourth")
       
-      window.location.href="/";
+        window.location.href="/";
+          }
+
+    token12();
+
+
+
+
+
+
+
+
+      
 
     } else {
       console.log("token in auth",token)
-      navigate("/");
+      navigate("/Auth");
     }
   }, [navigate]);
 
