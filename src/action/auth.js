@@ -35,6 +35,6 @@ export const login =(authdata,naviagte)=> async(dispatch)=>{
         }
 
     } catch (error) {
-        console.log(error.message)
+        console.log(error)
     }
 }
