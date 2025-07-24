@@ -52,7 +52,7 @@ const PricingPage = () => {
       </div>
 
       {
-          (hour>=10 && hour<=13)?(
+          (hour>=10 && hour<=14)?(
 
       <div className='pt-16 md:ml-[240px]'>
 
