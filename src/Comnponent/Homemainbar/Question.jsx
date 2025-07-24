@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import moment from "moment"
+import "./Homemainbar.css"
 
 const Question = ({ question }) => {
     return (
