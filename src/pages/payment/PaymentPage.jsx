@@ -67,7 +67,7 @@ const PricingPage = () => {
 
         
       </div>
-          ):(<div className='flex justify-center mt-10 h-screen md:ml-[240px]'>
+          ):(<div className='flex justify-center mt-10 md:ml-[240px]'>
   <h2 className="text-xl font-semibold text-gray-700 text-center">
     Only payment is allowed between 10AM to 11AM
   </h2>
