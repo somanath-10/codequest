@@ -40,6 +40,7 @@ useEffect(() => {
     setpassword(newPassword);
   };
 
+const [isSubmitting, setIsSubmitting] = useState(false);
 
 
     const [issignup, setissignup] = useState(false)
@@ -48,25 +49,29 @@ useEffect(() => {
     const [password, setpassword] = useState("")
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const handlesubmit = (e) => {
-        e.preventDefault();
-        if (!email && !password) {
-            alert("Enter email and password")
-        }
-        if (issignup) {
-            if (!name || !password ||!email) {
-                alert("Enter all details to continue")
-            }
-            else{
-                dispatch(signup({ name, email, password }, navigate))
-            }
-            
-        } else {
-            
-            dispatch(login({ email, password }, navigate))
-        
-        }
+const handlesubmit = async (e) => {
+    e.preventDefault();
+    if (isSubmitting) return; // Prevent double click
+
+    if (!email || !password || (issignup && !name)) {
+        alert("Enter all details to continue");
+        return;
     }
+
+    setIsSubmitting(true);
+
+    try {
+        if (issignup) {
+            await dispatch(signup({ name, email, password }, navigate));
+        } else {
+            await dispatch(login({ email, password }, navigate));
+        }
+    } catch (err) {
+        console.error(err);
+        setIsSubmitting(false); // Reset if there’s an error
+    }
+};
+
     const handleswitch = () => {
         setissignup(!issignup);
         setname("");
@@ -183,8 +188,8 @@ useEffect(() => {
                         
                         <p className=' mt-2'>
                             {issignup ? "Already have an account?" : "Don't have an account?"}{" "}
-                            <button type='button' className='handle-switch-btn' onClick={handleswitch}>
-                                {issignup ? "Log in" : "Sign up"}
+                            <button type='button' className='handle-switch-btn' onClick={handleswitch} disabled={isSubmitting}>
+                                {isSubmitting ? "Please wait..." : issignup ? "Sign up" : "Log in"}
                             </button>
                         </p>
 
