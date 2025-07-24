@@ -7,7 +7,10 @@ const AuthCallback = () => {
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
-    const token = query.get("token");
+    const token = document.cookie
+    .split('; ')
+    .find(row => row.startsWith('token='))
+    ?.split('=')[1];
     console.log(token)
     if (token) {
         const user = jwtDecode(token); // this gives you the user object from the token
